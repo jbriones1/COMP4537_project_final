@@ -1,0 +1,60 @@
+Authentication: (/)
+=======================================================================================================================
+LOGIN (POST /login)
+-----------------------------------------------------------------------------------------------------------------------
+When a user logs in, if everything is fine, you'll get a JSON object back of two tokens and a user object.
+
+Body: JSON
+ - username
+ - password: unhashed
+
+Response: JSON
+ - user: object of the user (without password)
+ - accessToken: Used to access everything in the API. Expires after 30 minutes.
+ - refreshToken: Used to create a new a new accessToken if the user is still online after 30 minutes. Expires on logout.
+
+Status code:
+ - 200: Logged in fine
+ - 400: Invalid user/password
+ - 500: Database / hashing issue
+
+TOKEN (POST /token)
+-----------------------------------------------------------------------------------------------------------------------
+When a user's access token expires, they have to get a new one. If they haven't logged out since making an access token,
+they have to make a POST to /token. They'll get back a new token to use. As long as the user hasn't logged out, the
+refresh token will be valid.
+
+Body: JSON
+ - token: refresh token
+
+Response: JSON
+ - accessToken: new access token
+
+Status code:
+ - 200: Success
+ - 403: Refresh token is invalid
+ - 500: Database / JWT issue
+
+LOGOUT (DELETE /logout)
+-----------------------------------------------------------------------------------------------------------------------
+Used to log out. Deletes the refresh token from the database.
+
+Body: JSON
+ - token: refresh token
+
+Status code:
+ - 200: Success
+ - 500: Database issue
+
+API: (/v1/*)
+=======================================================================================================================
+Requires a JSON token to access stuff. Set a header called 'Authorization' with the value 'Bearer <token>'.
+
+Headers:
+ - 'Authorization': 'Bearer <token>'
+
+Status code:
+ - 200: Success
+ - 401: No access token supplied
+ - 403: Access token expired (need to request a new one using route domainname.com/token)
+ - 500: Database borked
