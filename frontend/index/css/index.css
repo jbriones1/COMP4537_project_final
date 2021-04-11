@@ -1,0 +1,73 @@
+body {
+    background-color: rgb(216, 216, 216);
+}
+
+/* Header styles */
+#header {
+    display: flex;
+    text-align: center;
+    background-image: url("https://images.unsplash.com/photo-1593953786172-845c12f75b21?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+    background-position: center;
+    min-height: 400px;
+    color: white;
+}
+#name {
+    font-size: 2.5rem;
+    padding: 1em;
+    text-shadow: 1px 4px 2px #000000;
+}
+
+/* Loading container styles */
+#loadingContainer {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+/* New Task container styles */
+#newTask {
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1rem;
+    background-color: white;
+    display: none;
+    text-align: center;
+}
+
+/* Go-to container styles */
+#goTo {
+    margin: 1em;
+    border-radius: 0.5rem;
+    background-color: white;
+    text-align: center;
+    display: none;
+    padding: 1em;
+}
+
+/* Yesterday container styles */
+#yesterday {
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1rem;
+    background-color: white;
+    display: none;
+}
+#ystdTitle {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+/* New task container styles */
+#newTask {
+    display: none;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 900px) {
+    #header {
+      background-image: url("https://images.unsplash.com/photo-1603468620905-8de7d86b781e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80");
+      background-repeat: no-repeat;
+      background-color: white;
+      box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    }
+  }

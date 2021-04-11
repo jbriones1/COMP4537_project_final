@@ -1,0 +1,10 @@
+/* Content container */
+#content {
+    margin-top: 4em;
+}
+
+/* Loading container */
+#loading {
+    margin-left: 1em;
+    display: none;
+}

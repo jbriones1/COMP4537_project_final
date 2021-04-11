@@ -1,0 +1,149 @@
+/* Body */
+body {
+    background-color: rgb(216, 216, 216);
+    margin-bottom: 180px;
+}
+
+/* Header */
+#header {
+    text-align: center;
+    margin-top: 1em;
+}
+
+/* Buttons */
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+  }
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+/* Loader */
+#loader {
+    text-align: center;
+}
+
+/* Content Div */
+#content {
+    text-align: center;
+}
+
+/* Inputs */
+.input-group-text {
+    color: white;
+}
+
+/* New tasks */
+#newTaskTitle {
+    font-weight: bold;
+}
+.newTask {
+    margin: 1em auto;
+    padding: 2em;
+    background-color: #dde5dd;
+    border-radius: 1rem;
+}
+
+/* Save button */
+#saveBtn {
+    display: none;
+}
+
+/* Save all button */
+#saveAllBtn {
+    display: none;
+}
+
+/* Completed tasks */
+#completedTasks {
+    text-align: center;
+    margin-top: 0.5em;
+}
+.completed {
+    padding: 1em;
+    text-align: left;
+    border-radius: 1rem;
+    color: rgba(255, 255, 255, 0.761);
+    margin: 1em;
+}
+
+/* Content container */
+#content {
+    display: none;
+}
+
+/* task names */
+span.taskName {
+    font-weight: bold;
+    color: white;
+}
+/* todo tasks */
+.todoTaskContainer {
+    border-radius: 1rem;
+}
+.description {
+    overflow: hidden;
+}
+.todoTask {
+    display: block !important;
+    width: 80%;
+    text-align: left;
+    overflow: hidden;
+}
+div.todoTask {
+    padding: 1em;
+    color: white;
+}
+
+/* checkbox styling */
+div.checkbox {
+    background-color: white;
+    padding: 1em;
+}
+
+/* Footer styling */
+#pushBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4em;
+    color: white;
+    background-color: rgb(135, 135, 135);
+    border-radius: 1rem;
+    margin: 0.5em;
+}
+#pushBtn {
+    font-weight: 500;
+    border-radius: 1rem;
+    width: 70px;
+    color: white;
+}
+#pushTxt {
+    margin-top: 0.1em;
+}
+#deleteAllContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4em;
+    color: white;
+    background-color: rgb(135, 135, 135);
+    border-radius: 1rem;
+    margin: 0.5em;
+}
+#dltAllBtn {
+    font-weight: 500;
+    border-radius: 1rem;
+    width: 70px;
+    color: white;
+}

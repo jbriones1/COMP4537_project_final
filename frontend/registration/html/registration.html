@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Register</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="/registration/css/registration.css" type="text/css" />
+    
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/68565aa008.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="/">
+            <i class="far fa-calendar-check"></i>
+            SCHEDULR
+        </a>
+        <!-- Toggler Button (For Mobile) -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Navbar toggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Items -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <!-- Documentation -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/documentation">Documentation</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div id="content" class="container">
+        <h3 id="title">Create an Account</h3>
+        <div>
+            <!-- Username field -->
+            <div class="form-group">
+                <label for="usernameInput">Username</label>
+                <input type="text" class="form-control" id="usernameInput" aria-describedby="usernameInput"
+                    placeholder="Enter desired username">
+            </div>
+            <!-- Password field -->
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordInput"
+                    placeholder="Enter your password">
+            </div>
+            <!-- Full name field -->
+            <div class="form-group">
+                <label for="nameInput">Full Name</label>
+                <input type="text" class="form-control" id="nameInput" aria-describedby="nameInput"
+                    placeholder="Enter your name">
+            </div>
+            <!-- Submit button -->
+            <button id="submitBtn" type="submit" class="btn btn-dark">Submit</button>
+            <div id="loading" class="spinner-border text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="/registration/js/registration.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+</body>
+
+</html>

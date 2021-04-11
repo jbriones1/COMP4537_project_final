@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Task List</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="/taskList/css/taskList.css" type="text/css" />
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/68565aa008.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="/">
+            <i class="far fa-calendar-check"></i>
+            SCHEDULR
+        </a>
+        <!-- Toggler Button (For Mobile) -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Navbar toggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Items -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <!-- Task List -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Task List<span class="sr-only">(current)</span></a>
+                </li>
+                <!-- Documentation -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/documentation">Documentation</a>
+                </li>
+                <!-- Admin -->
+                <li class="nav-item" id="nav-admin">
+                    <a class="nav-link" href="/admin">Admin</a>
+                </li>
+                <!-- Logout -->
+                <li class="nav-item" id="nav-admin">
+                    <a class="nav-link" id="logOut" href="javascript:;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div id="header" class="container">
+        <h1>Task List</h1>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div id="loadingContainer">
+            <div id="loading" class="spinner-border text-dark"></div>
+        </div>
+    </div>
+
+    <!-- Content container -->
+    <div id="content" class="container">
+        <!-- Prompt -->
+        <h3 id="prompt"></h3>
+        <!-- Tasks -->
+        <div id="taskList" class="col-md">
+            <!-- Incomplete -->
+            <div id="incompleteTasks">
+                <h3 id="todoTitle">Still TODO:</h3>
+            </div>
+
+            <!-- New Tasks -->
+            <div id="newTasksContainer">
+            </div>
+
+            <!-- Buttons for new tasks -->
+            <div id="btnContainer">
+                <button id="addBtn" class="btn btn-lg btn-success btn-circle">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+                <button id="saveBtn" class="btn btn-lg btn-success">Save</button>
+            </div>
+
+            <!-- Completed -->
+            <div id="completedTasks">
+                <h3 id="completedTitle">Completed Tasks:</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Options Modal -->
+    <div class="modal fade" id="optionsModal" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="optionsModalLabel">Options</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Would you like to:
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="editBtn" class="btn btn-primary" data-dismiss="modal">Edit Task</button>
+                    <button type="button" id="dltBtn" class="btn btn-danger">Delete Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- task name -->
+                    <div class="input-group mb-3 editTaskName">
+                        <span class="bg-info input-group-text">Task</span>
+                        <input required type="text" class="form-control task-name" id="editTaskName"
+                            aria-label="editTaskName" aria-describedby="editTaskName"
+                            placeholder="Go for a jog, read 15 pages, ...">
+                    </div>
+                    <!-- task description -->
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="bg-info input-group-text">Description</span>
+                        </div>
+                        <textarea id="editTaskDescription"
+                            placeholder="Does not need to be finished today, remember to set an alarm for 12 minutes, ..."
+                            class="form-control task-description" aria-label="taskDescription"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="editSaveBtn" class="btn btn-primary">Save</button>
+                    <button type="button" id="cancelBtn" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="fixed-bottom container">
+        <div class="row bg-dark">
+            <div id="pushBtnContainer" class="col-sm">
+                <p id="pushText">Push unfinished tasks to the next day</p>
+                <button id="pushBtn" class="btn btn-warning">Push</button>
+            </div>
+            <div id="deleteAllContainer" class="col-sm">
+                <p id="dltAllText">Delete all tasks; Start anew</p>
+                <button id="dltAllBtn" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="/taskList/js/taskList.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+</body>
+
+</html>
