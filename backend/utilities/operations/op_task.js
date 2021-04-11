@@ -17,9 +17,13 @@ const addTask = (req, res) => {
 
   if (
     !taskName ||
+    typeof taskName !== 'string' ||
     !taskDescription ||
+    typeof taskDescription !== 'string' ||
     isComplete == null ||
-    taskListID == null
+    typeof isComplete !== 'boolean' ||
+    taskListID == null ||
+    typeof taskListID !== 'number'
   ) {
     return res.sendStatus(400);
   }
@@ -58,7 +62,8 @@ const addTask = (req, res) => {
  * @returns status code
  */
 const completeTask = (req, res) => {
-  if (req.params.taskID == null) return res.sendStatus(400);
+  if (req.params.taskID == null || !parseInt(req.params.taskID))
+    return res.sendStatus(400);
 
   const query = `UPDATE task
      SET isComplete=1
@@ -91,7 +96,8 @@ const completeTask = (req, res) => {
  * @returns status code
  */
 const deleteTask = (req, res) => {
-  if (req.params.taskID == null) return res.sendStatus(400);
+  if (req.params.taskID == null || !parseInt(req.params.taskID))
+    return res.sendStatus(400);
 
   const query = `DELETE FROM task
      WHERE taskID = ?`;
@@ -126,7 +132,12 @@ const deleteTask = (req, res) => {
 const moveTasks = async (req, res) => {
   const { date } = req.query;
 
-  if (!date) return res.sendStatus(400);
+  if (!date || typeof date !== 'string') return res.sendStatus(400);
+
+  // Checks that the date is valid
+  // Valid dates can be YYYY/MM/DD or YYYY-MM-DD
+  if (new Date(date).getTime() !== new Date(date).getTime())
+    return res.sendStatus(400);
 
   try {
     const { userID } = await getUserFromToken(req.token);
@@ -202,7 +213,7 @@ const addDay = (date) => {
 const updateTask = (req, res) => {
   // Check if the taskID is there
   const taskID = req.params.taskID;
-  if (taskID == null) return res.sendStatus(400);
+  if (taskID == null || !parseInt(taskID)) return res.sendStatus(400);
 
   // Check that a proper body was sent
   const { taskName, taskDescription, isComplete } = req.body;

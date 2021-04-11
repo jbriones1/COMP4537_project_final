@@ -11,6 +11,7 @@ const getUserByID = async (req, res) => {
   try {
     const { userID } = await getUserFromToken(req.token);
 
+    console.log(typeof userID);
     if (userID == null) return res.sendStatus(400);
 
     const sql_statement = `SELECT username,name,isAdmin 

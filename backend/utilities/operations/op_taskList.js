@@ -15,7 +15,13 @@ const { getUserFromToken } = require('../token');
 const addTaskList = async (req, res) => {
   const { date } = req.query;
 
-  if (!date) return res.sendStatus(400);
+  // Checks for malformed query
+  if (!date || typeof date !== 'string') return res.sendStatus(400);
+
+  // Checks that the date is valid
+  // Valid dates can be YYYY/MM/DD or YYYY-MM-DD
+  if (new Date(date).getTime() !== new Date(date).getTime())
+    return res.sendStatus(400);
 
   try {
     const { userID } = await getUserFromToken(req.token);
@@ -54,7 +60,13 @@ const addTaskList = async (req, res) => {
  * @returns status code
  */
 const deleteTaskList = async (req, res) => {
-  if (req.params.taskListID == null) return res.sendStatus(400);
+
+  console.log(typeof parseInt(req.params.taskListID))
+  if (
+    req.params.taskListID == null ||
+    !parseInt(req.params.taskListID)
+  )
+    return res.sendStatus(400);
 
   try {
     const q1 = `DELETE FROM task
@@ -93,6 +105,11 @@ const getTaskList = async (req, res) => {
   const { date } = req.query;
 
   if (!date) return res.sendStatus(400);
+
+  // Checks that the date is valid
+  // Valid dates can be YYYY/MM/DD or YYYY-MM-DD
+  if (new Date(date).getTime() !== new Date(date).getTime())
+    return res.sendStatus(400);
 
   try {
     const { userID } = await getUserFromToken(req.token);

@@ -18,7 +18,7 @@ exports.getAdminStats = async (req, res) => {
   const query = 'SELECT * FROM apicount';
 
   try {
-    if (!req.token) return res.sendStatus(400);
+    if (!req.token || typeof req.token !== 'string') return res.sendStatus(400);
 
     const token = await jwt.verify(req.token, process.env.TOKEN_SECRET);
 
